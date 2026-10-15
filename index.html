@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abid Faiyaz · QA Engineer</title>
+<meta name="description" content="Abid Faiyaz — QA Engineer working with Playwright, Selenium, Java, TestNG and API testing.">
+<link rel="icon" href="https://avatars.githubusercontent.com/u/192727493?v=4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b1020;
+    --bg-2: #111733;
+    --card: #141b38;
+    --border: #232c52;
+    --text: #e6e9f5;
+    --muted: #9aa3c4;
+    --accent: #7c6cf6;
+    --accent-2: #5b8def;
+    --ok: #34d399;
+    --grad: linear-gradient(90deg, #a78bfa, #60a5fa);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  /* Nav */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(11, 16, 32, .82);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { font-weight: 800; font-size: 1.25rem; color: var(--accent); }
+  .logo span { color: var(--accent-2); }
+  .links { display: flex; gap: 28px; }
+  .links a { color: var(--muted); font-weight: 500; font-size: .95rem; transition: color .2s; }
+  .links a:hover, .links a.active { color: var(--text); }
+  .menu-btn { display: none; background: none; border: 0; color: var(--text); font-size: 1.5rem; cursor: pointer; }
+
+  /* Hero */
+  .hero {
+    min-height: calc(100vh - 64px);
+    display: flex; align-items: center;
+    background:
+      radial-gradient(600px 400px at 80% 40%, rgba(124, 108, 246, .18), transparent 70%),
+      radial-gradient(500px 300px at 10% 10%, rgba(91, 141, 239, .10), transparent 70%);
+  }
+  .hero .wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: center; padding-top: 48px; padding-bottom: 48px; }
+  .eyebrow { color: var(--accent); font-weight: 700; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; }
+  h1 { font-size: clamp(2.4rem, 6vw, 3.8rem); line-height: 1.08; font-weight: 800; margin: 14px 0 18px; }
+  .grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .typing { font-size: 1.25rem; font-weight: 600; margin-bottom: 18px; min-height: 2rem; }
+  .typing .word { color: #a5b4fc; border-bottom: 2px solid rgba(165, 180, 252, .4); }
+  .caret { display: inline-block; width: 2px; height: 1.2em; background: var(--text); vertical-align: -3px; margin-left: 2px; animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .lead { color: var(--muted); font-size: 1.05rem; max-width: 560px; }
+  .actions { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 22px; border-radius: 10px; font-weight: 600;
+    background: linear-gradient(90deg, #6d5df5, #8b5cf6);
+    box-shadow: 0 8px 24px rgba(124, 108, 246, .35);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(124, 108, 246, .45); }
+  .icon-btn {
+    width: 46px; height: 46px; display: grid; place-items: center;
+    border-radius: 10px; background: var(--card); border: 1px solid var(--border);
+    color: var(--muted); transition: all .2s;
+  }
+  .icon-btn:hover { color: var(--text); border-color: var(--accent); transform: translateY(-2px); }
+  .icon-btn svg, .btn svg { width: 18px; height: 18px; fill: currentColor; }
+  .avatar-wrap { display: flex; justify-content: center; }
+  .avatar {
+    width: min(320px, 70vw); aspect-ratio: 1; border-radius: 50%;
+    padding: 5px; background: var(--grad);
+    box-shadow: 0 0 80px rgba(124, 108, 246, .35);
+  }
+  .avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block; background: var(--bg-2); border: 4px solid var(--bg); }
+
+  /* Sections */
+  section.block { padding: 96px 0; }
+  section.block:nth-of-type(even) { background: var(--bg-2); }
+  .head { text-align: center; margin-bottom: 48px; }
+  .head h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; }
+  .head p { color: var(--muted); margin-top: 6px; }
+  .head h2::after { content: ""; display: block; width: 56px; height: 4px; border-radius: 4px; background: var(--grad); margin: 12px auto 0; }
+
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+    padding: 28px; transition: border-color .25s, transform .25s;
+  }
+  .card:hover { border-color: rgba(124, 108, 246, .6); }
+  .tag {
+    display: inline-block; font-size: .78rem; font-weight: 600;
+    padding: 4px 10px; border-radius: 999px;
+    background: rgba(124, 108, 246, .14); color: #c4b5fd; border: 1px solid rgba(124, 108, 246, .3);
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .pill { font-size: .7rem; font-weight: 700; letter-spacing: .06em; padding: 3px 9px; border-radius: 999px; }
+  .pill.now { background: rgba(52, 211, 153, .15); color: var(--ok); border: 1px solid rgba(52, 211, 153, .35); }
+
+  /* Experience */
+  .exp { max-width: 860px; margin: 0 auto; }
+  .role { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: baseline; }
+  .role h3 { font-size: 1.2rem; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .date { color: var(--muted); font-size: .92rem; }
+  .company { color: #a5b4fc; font-weight: 600; margin: 6px 0 16px; }
+  .exp ul { list-style: none; display: grid; gap: 10px; }
+  .exp li { position: relative; padding-left: 22px; color: #c9cee6; }
+  .exp li::before { content: ""; position: absolute; left: 4px; top: .65em; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+
+  /* Projects */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 22px; }
+  .proj { display: flex; flex-direction: column; }
+  .proj:hover { transform: translateY(-4px); }
+  .proj h3 { font-size: 1.1rem; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .proj p { color: var(--muted); margin-top: 10px; flex: 1; font-size: .96rem; }
+  .proj .more { margin-top: 18px; color: #a5b4fc; font-weight: 600; font-size: .92rem; display: inline-flex; gap: 6px; align-items: center; }
+  .proj .more:hover { color: var(--text); }
+  .proj .more svg { width: 16px; height: 16px; fill: currentColor; }
+
+  /* Skills */
+  .skills { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 16px; }
+  .skill { text-align: center; padding: 22px 14px; font-weight: 600; }
+  .skill:hover { transform: translateY(-3px); }
+  .skill .ic { font-size: 1.7rem; display: block; margin-bottom: 8px; }
+  .know { max-width: 860px; margin: 40px auto 0; }
+  .know h3 { font-size: 1.05rem; margin-bottom: 14px; text-align: center; color: var(--muted); font-weight: 600; }
+  .know .tags { justify-content: center; }
+
+  /* Edu / certs */
+  .list { max-width: 860px; margin: 0 auto; display: grid; gap: 16px; }
+  .row { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .row h3 { font-size: 1.08rem; }
+  .row .sub { color: var(--muted); font-size: .94rem; }
+
+  /* Contact */
+  .contact { text-align: center; max-width: 640px; margin: 0 auto; }
+  .contact p { color: var(--muted); margin-bottom: 26px; }
+  .contact .actions { justify-content: center; }
+
+  footer { border-top: 1px solid var(--border); padding: 28px 0; text-align: center; color: var(--muted); font-size: .9rem; }
+
+  /* Reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .caret { animation: none; }
+  }
+
+  @media (max-width: 860px) {
+    .links {
+      position: absolute; top: 64px; left: 0; right: 0;
+      flex-direction: column; gap: 0; background: var(--bg-2);
+      border-bottom: 1px solid var(--border); display: none;
+    }
+    .links.open { display: flex; }
+    .links a { padding: 14px 24px; }
+    .menu-btn { display: block; }
+    .hero .wrap { grid-template-columns: 1fr; text-align: center; }
+    .hero .avatar-wrap { order: -1; }
+    .avatar { width: min(220px, 60vw); }
+    .lead { margin: 0 auto; }
+    .actions { justify-content: center; }
+    section.block { padding: 72px 0; }
+    .grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .wrap { padding: 0 16px; }
+    .card { padding: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#home" class="logo">Ab<span>.</span></a>
+    <button class="menu-btn" aria-label="Open menu" onclick="document.querySelector('.links').classList.toggle('open')">☰</button>
+    <div class="links" id="links"></div>
+  </div>
+</nav>
+
+<main>
+  <header class="hero" id="home">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow" id="eyebrow"></div>
+        <h1>Hi, I'm <span class="grad" id="name"></span></h1>
+        <div class="typing">I am a <span class="word" id="typed"></span><span class="caret"></span></div>
+        <p class="lead" id="summary"></p>
+        <div class="actions" id="hero-actions"></div>
+      </div>
+      <div class="avatar-wrap">
+        <div class="avatar"><img id="photo" alt="Photo of Abid Faiyaz"></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="block" id="experience">
+    <div class="wrap">
+      <div class="head"><h2>Experience</h2><p>Where I've worked</p></div>
+      <div class="exp" id="exp-list"></div>
+    </div>
+  </section>
+
+  <section class="block" id="projects">
+    <div class="wrap">
+      <div class="head"><h2>Projects</h2><p>What I've built and tested</p></div>
+      <div class="grid" id="proj-list"></div>
+    </div>
+  </section>
+
+  <section class="block" id="skills">
+    <div class="wrap">
+      <div class="head"><h2>Skills</h2><p>Tools and technologies I work with</p></div>
+      <div class="skills" id="skill-list"></div>
+      <div class="know">
+        <h3>Testing knowledge</h3>
+        <div class="tags" id="know-list"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="education">
+    <div class="wrap">
+      <div class="head"><h2>Education</h2><p>Academic background</p></div>
+      <div class="list" id="edu-list"></div>
+    </div>
+  </section>
+
+  <section class="block" id="certifications">
+    <div class="wrap">
+      <div class="head"><h2>Certifications</h2><p>Courses and credentials</p></div>
+      <div class="list" id="cert-list"></div>
+    </div>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="wrap">
+      <div class="head"><h2>Get in touch</h2></div>
+      <div class="contact">
+        <p>Open to conversations about QA, test automation and quality engineering. Feel free to reach out.</p>
+        <div class="actions" id="contact-actions"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="year"></span> Abid Faiyaz · Built with HTML &amp; CSS, hosted on GitHub Pages</div>
+</footer>
+
+<script>
+/* ============================================================
+   EDIT YOUR DETAILS HERE — everything on the page comes from this object.
+   Leave a field as "" (or a list as []) to hide it.
+   ============================================================ */
+const DATA = {
+  name: "Abid Faiyaz",
+  eyebrow: "Quality Assurance · Automation · Healthcare",
+  roles: ["QA Engineer", "Playwright (Java) Automation Tester", "Selenium WebDriver Tester", "Manual & API Tester"],
+  summary: "QA Engineer with hands-on experience in manual and automation testing of enterprise healthcare web applications using Playwright (Java), Selenium WebDriver and TestNG. I build scalable, reusable automation scripts, run tests in parallel to cut execution time, and validate APIs with Postman.",
+  photo: "https://avatars.githubusercontent.com/u/192727493?v=4",   // or "photo.jpg" placed next to index.html
+  resume: "resume.pdf",
+  email: "abidfaiyaz09@gmail.com",
+  linkedin: "https://www.linkedin.com/in/md-abid-faiyaz-99a431214/",
+  github: "https://github.com/Abidfaiyaz",
+
+  experience: [
+    {
+      title: "Associate Quality Assurance Engineer",
+      current: true,
+      dates: "Aug 2025 – Present",
+      company: "Techdome Solutions Private Limited",
+      location: "Hyderabad, India",
+      points: [
+        "Built and maintained Playwright (Java) automation scripts for a healthcare application, covering the search, results and dashboard modules",
+        "Designed scalable, reusable automation scripts that improved test coverage and maintainability across core application workflows",
+        "Implemented multithreaded (parallel) test execution in the automation suite, reducing overall test run time",
+        "Performed manual functional testing of a Healthcare Management System, validating features against documented requirements",
+        "Executed smoke, sanity, regression, exploratory, cross-browser and compatibility testing across web and mobile applications",
+        "Logged and tracked defects in Jira with clear reproduction steps, severity and screenshots, and managed version control using Git",
+        "Worked in Agile sprints, collaborating closely with developers to drive timely bug fixes and on-time releases"
+      ],
+      tags: ["Playwright", "Java", "TestNG", "Selenium", "Postman", "Jira", "Git", "Agile"]
+    },
+    {
+      title: "Software Tester Intern",
+      dates: "Feb 2025 – Jul 2025",
+      company: "Healthletic Lifestyle Pvt. Ltd.",
+      location: "Remote",
+      points: [
+        "Analysed requirements and authored detailed test cases and scenarios to ensure complete functional coverage",
+        "Executed smoke, functional and regression testing to validate features against business requirements",
+        "Identified, documented and tracked defects in Jira with proper severity, priority and reproduction steps",
+        "Collaborated with developers during Agile sprints to retest fixes and support on-time releases",
+        "Gained hands-on experience across the SDLC and STLC, including requirement analysis, test execution and defect lifecycle management"
+      ],
+      tags: ["Manual Testing", "Test Case Design", "Jira", "Agile", "SDLC / STLC"]
+    }
+  ],
+
+  projects: [
+    {
+      title: "Wizlo / SmarterEMR – Telehealth EMR Platform",
+      live: true,
+      dates: "Nov 2025 – Present",
+      text: "Manual and automation testing across the search, results and dashboard modules. Automated core EMR workflows with Playwright (Java) and ran scripts in parallel with multithreading, cutting regression effort and execution time. Defects tracked in Jira, scripts versioned in Git each sprint.",
+      tags: ["Playwright", "Java", "TestNG", "Postman", "Jira", "Git"],
+      link: ""
+    },
+    {
+      title: "SalemSeats – Online Ticket Booking Platform",
+      dates: "Sep – Dec 2025",
+      text: "End-to-end testing of the booking flow: event listing, seat selection and availability, seat locking, pricing, payment, confirmation and cancellation. Automated core booking workflows in a TestNG-based Playwright (Java) framework with reusable page/action classes and assertion-based validations.",
+      tags: ["Playwright", "Java", "TestNG", "Jira", "GitHub"],
+      link: ""
+    },
+    {
+      title: "OpenCart Automation Framework",
+      text: "Hybrid Selenium framework for the OpenCart e-commerce site with page objects, data-driven tests from Excel (Apache POI), Log4j logging, Extent reports, and TestNG suites for grouping and cross-browser runs.",
+      tags: ["Selenium", "Java", "TestNG", "Maven", "Apache POI", "Extent Reports"],
+      link: "https://github.com/Abidfaiyaz/opencart121"
+    },
+    {
+      title: "Selenium WebDriver Programs",
+      text: "Collection of Selenium WebDriver programs in Java covering locators, waits, alerts, frames, windows, actions and screenshot capture — the building blocks behind larger frameworks.",
+      tags: ["Selenium", "Java", "WebDriver"],
+      link: "https://github.com/Abidfaiyaz/Selenium"
+    },
+    {
+      title: "Apache POI – Data-Driven Testing",
+      text: "Java utilities for reading and writing Excel test data with Apache POI, used to drive tests from spreadsheets instead of hard-coded values.",
+      tags: ["Java", "Apache POI", "Data-Driven"],
+      link: "https://github.com/Abidfaiyaz/ApchiPOI"
+    },
+    {
+      title: "Automation Assessment",
+      text: "Java automation assignment solutions demonstrating test design, clean code structure and assertion-based validation.",
+      tags: ["Java", "Selenium", "TestNG"],
+      link: "https://github.com/Abidfaiyaz/Assessment"
+    }
+  ],
+
+  skills: [
+    ["☕", "Java"], ["🎭", "Playwright (Java)"], ["🌐", "Selenium WebDriver"], ["✅", "TestNG"],
+    ["🧱", "Page Object Model"], ["📊", "Data-Driven Testing"], ["🥒", "BDD"], ["📮", "Postman / API"],
+    ["🧪", "Manual Testing"], ["🐞", "Jira"], ["🌿", "Git / GitHub"], ["📦", "Maven"]
+  ],
+
+  knowledge: ["Functional", "Smoke", "Sanity", "Regression", "Exploratory", "Cross-browser & Compatibility",
+              "Parallel Execution", "Request/Response Validation", "Agile / Scrum", "SDLC", "STLC", "Defect Life Cycle"],
+
+  education: [
+    { title: "Bachelor of Engineering", place: "Rajiv Gandhi Proudyogiki Vishwavidyalaya (R.G.P.V), Bhopal, MP", date: "Sep 2021 – May 2024" },
+    { title: "Diploma", place: "Maulana Azad National Urdu University, Hyderabad, Telangana", date: "Aug 2017 – May 2020" }
+  ],
+
+  // Add certificates, e.g. { title: "Selenium WebDriver with Java", by: "Udemy", date: "2025", link: "https://..." }
+  certifications: []
+};
+
+/* ============================================================ */
+const icons = {
+  mail: '<svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4.2-8 5-8-5V6l8 5 8-5z"/></svg>',
+  in: '<svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.6 8.65 21 11.2 21 14.5V21h-4v-5.8c0-1.4 0-3.2-1.95-3.2S12.8 13.5 12.8 15.1V21H9z"/></svg>',
+  gh: '<svg viewBox="0 0 24 24"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg>',
+  dl: '<svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5zm7-18-1 1v10.2l-3.6-3.6L6 11l6 6 6-6-1.4-1.4-3.6 3.6V3z"/></svg>',
+  ext: '<svg viewBox="0 0 24 24"><path d="M14 3v2h3.6l-9.8 9.8 1.4 1.4L19 6.4V10h2V3zM5 5h6V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-6h-2v6H5z"/></svg>'
+};
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const $ = id => document.getElementById(id);
+const tags = list => `<div class="tags">${list.map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div>`;
+
+function socialButtons() {
+  let html = "";
+  if (DATA.email) html += `<a class="icon-btn" href="mailto:${esc(DATA.email)}" aria-label="Email">${icons.mail}</a>`;
+  if (DATA.linkedin) html += `<a class="icon-btn" href="${esc(DATA.linkedin)}" target="_blank" rel="noopener" aria-label="LinkedIn">${icons.in}</a>`;
+  if (DATA.github) html += `<a class="icon-btn" href="${esc(DATA.github)}" target="_blank" rel="noopener" aria-label="GitHub">${icons.gh}</a>`;
+  return html;
+}
+
+function render() {
+  document.title = `${DATA.name} · QA Engineer`;
+  $("name").textContent = DATA.name;
+  $("eyebrow").textContent = DATA.eyebrow;
+  $("summary").textContent = DATA.summary;
+  $("photo").src = DATA.photo;
+  $("year").textContent = new Date().getFullYear();
+
+  const primary = DATA.resume
+    ? `<a class="btn" href="${esc(DATA.resume)}" download>${icons.dl} Download Resume</a>`
+    : `<a class="btn" href="#projects">View Projects</a>`;
+  $("hero-actions").innerHTML = primary + socialButtons();
+  $("contact-actions").innerHTML =
+    (DATA.email ? `<a class="btn" href="mailto:${esc(DATA.email)}">${icons.mail} Email me</a>` : `<a class="btn" href="${esc(DATA.github)}" target="_blank" rel="noopener">${icons.gh} Find me on GitHub</a>`) + socialButtons();
+
+  $("exp-list").innerHTML = DATA.experience.map(e => `
+    <article class="card reveal">
+      <div class="role">
+        <h3>${esc(e.title)} ${e.current ? '<span class="pill now">CURRENT</span>' : ""}</h3>
+        ${e.dates ? `<span class="date">${esc(e.dates)}</span>` : ""}
+      </div>
+      <div class="company">${esc(e.company)}${e.location ? "  ·  " + esc(e.location) : ""}</div>
+      <ul>${e.points.map(p => `<li>${esc(p)}</li>`).join("")}</ul>
+      ${tags(e.tags)}
+    </article>`).join("");
+
+  $("proj-list").innerHTML = DATA.projects.map(p => `
+    <article class="card proj reveal">
+      <h3>${esc(p.title)} ${p.live ? '<span class="pill now">LIVE</span>' : ""}</h3>
+      ${p.dates ? `<span class="date">${esc(p.dates)}</span>` : ""}
+      <p>${esc(p.text)}</p>
+      ${tags(p.tags)}
+      ${p.link ? `<a class="more" href="${esc(p.link)}" target="_blank" rel="noopener">View on GitHub ${icons.ext}</a>` : ""}
+    </article>`).join("");
+
+  $("skill-list").innerHTML = DATA.skills.map(([ic, s]) =>
+    `<div class="card skill reveal"><span class="ic" aria-hidden="true">${ic}</span>${esc(s)}</div>`).join("");
+  $("know-list").innerHTML = DATA.knowledge.map(k => `<span class="tag">${esc(k)}</span>`).join("");
+
+  $("edu-list").innerHTML = DATA.education.map(e => `
+    <div class="card row reveal">
+      <div><h3>${esc(e.title)}</h3><div class="sub">${esc(e.place)}${e.date ? "  ·  " + esc(e.date) : ""}</div></div>
+    </div>`).join("");
+
+  $("cert-list").innerHTML = DATA.certifications.map(c => `
+    <div class="card row reveal">
+      <div><h3>${esc(c.title)}</h3><div class="sub">${esc(c.by)}${c.date ? "  ·  " + esc(c.date) : ""}</div></div>
+      ${c.link ? `<a class="more tag" href="${esc(c.link)}" target="_blank" rel="noopener">View Certificate</a>` : ""}
+    </div>`).join("");
+
+  // Hide sections with no content, and build the nav from what's left
+  const sections = [["home", "Home"], ["experience", "Experience"], ["projects", "Projects"], ["skills", "Skills"],
+                    ["education", "Education", DATA.education], ["certifications", "Certifications", DATA.certifications], ["contact", "Contact"]];
+  $("links").innerHTML = sections.filter(([id, , list]) => {
+    if (list && !list.length) { $(id).style.display = "none"; return false; }
+    return true;
+  }).map(([id, label]) => `<a href="#${id}" data-id="${id}">${label}</a>`).join("");
+  $("links").addEventListener("click", e => { if (e.target.tagName === "A") $("links").classList.remove("open"); });
+}
+
+function typeLoop() {
+  const el = $("typed");
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) { el.textContent = DATA.roles[0]; return; }
+  let r = 0, i = 0, del = false;
+  (function tick() {
+    const word = DATA.roles[r];
+    i += del ? -1 : 1;
+    el.textContent = word.slice(0, i);
+    let wait = del ? 45 : 90;
+    if (!del && i === word.length) { del = true; wait = 1600; }
+    else if (del && i === 0) { del = false; r = (r + 1) % DATA.roles.length; wait = 350; }
+    setTimeout(tick, wait);
+  })();
+}
+
+function observe() {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+  const navLinks = [...document.querySelectorAll("#links a")];
+  const spy = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) navLinks.forEach(a => a.classList.toggle("active", a.dataset.id === e.target.id));
+  }), { rootMargin: "-45% 0px -50% 0px" });
+  document.querySelectorAll("main > header, main > section").forEach(s => spy.observe(s));
+}
+
+render();
+typeLoop();
+observe();
+</script>
+</body>
+</html>
